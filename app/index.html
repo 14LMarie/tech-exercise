@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="description" content="Lowe's Assessment">
+      <title>Lynsey Teague - Interview Test</title>
+      <link rel="stylesheet" type="text/css" href="style/reset.css" />
+        <link rel="stylesheet" type="text/css" href="style/style.css" />
+   </head>
+   <body ng-controller="ProductsController as vm">        
+        <header class="row">
+            <div class="hero-unit">
+               <div class="col-3">
+                   <img ng-src="{{vm.products[0].imageUrls.md}}" alt="product image">
+               </div>
+               <div class="col-6">
+                  <h1>{{vm.products[0].brand}} {{vm.products[0].description}}</h1>
+                        <ul ng-repeat="bullet in vm.products[0].marketingBullets | limitTo: 3">
+                             <li>{{bullet}}</li>
+                        </ul> 
+               </div>
+               <div class="col-3">
+                   <button>Add to Cart</button>
+                    <p>{{vm.products[0].pricing.price.selling | currency}}</p>
+               </div>   
+          </div>
+        </header>
+         
+        <section class="row" ng-repeat="product in vm.products | limitTo:6">
+              <div class="col-4 mobile">
+                <div class="single-product">
+                  <img ng-src="{{product.imageUrls.sm}}" alt="product image">
+                  <h2>{{product.brand}} {{product.description}}</h2>
+                  <p>{{product.pricing.price.selling | currency}}</p>
+                  <button>View More</button> 
+                </div> 
+              </div>
+        </section>
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+        
+        
+        <script type="application/javascript" src="./scripts/app.module.js"></script>
+        <script src="./scripts/data.factory.js"></script>
+        <script src="./scripts/product.controller.js"></script>
+   </body>
+</html>
